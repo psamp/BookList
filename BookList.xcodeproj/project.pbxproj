@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		746C22ED1D9740E300444268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C22EC1D9740E300444268 /* AppDelegate.swift */; };
-		746C22EF1D9740E300444268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C22EE1D9740E300444268 /* ViewController.swift */; };
+		746C22EF1D9740E300444268 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C22EE1D9740E300444268 /* ItemViewController.swift */; };
 		746C22F21D9740E300444268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746C22F01D9740E300444268 /* Main.storyboard */; };
 		746C22F41D9740E300444268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746C22F31D9740E300444268 /* Assets.xcassets */; };
 		746C22F71D9740E300444268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746C22F51D9740E300444268 /* LaunchScreen.storyboard */; };
@@ -18,6 +18,9 @@
 		746C23221D974CAF00444268 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C231E1D974CAF00444268 /* Photo+CoreDataProperties.swift */; };
 		746C23231D974CAF00444268 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C231F1D974CAF00444268 /* Item+CoreDataClass.swift */; };
 		746C23241D974CAF00444268 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */; };
+		74BFC0B41D9816DB00CACB22 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B31D9816DB00CACB22 /* ItemCell.swift */; };
+		74BFC0B61D981DF000CACB22 /* EbayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B51D981DF000CACB22 /* EbayAPI.swift */; };
+		74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +36,7 @@
 /* Begin PBXFileReference section */
 		746C22E91D9740E300444268 /* BookList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746C22EC1D9740E300444268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		746C22EE1D9740E300444268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		746C22EE1D9740E300444268 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		746C22F11D9740E300444268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		746C22F31D9740E300444268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		746C22F61D9740E300444268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +49,9 @@
 		746C231E1D974CAF00444268 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		746C231F1D974CAF00444268 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		74BFC0B31D9816DB00CACB22 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		74BFC0B51D981DF000CACB22 /* EbayAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EbayAPI.swift; sourceTree = "<group>"; };
+		74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +99,14 @@
 				746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */,
 				746C23101D9746AA00444268 /* Item.xcdatamodeld */,
 				746C22EC1D9740E300444268 /* AppDelegate.swift */,
-				746C22EE1D9740E300444268 /* ViewController.swift */,
+				746C22EE1D9740E300444268 /* ItemViewController.swift */,
 				746C22F01D9740E300444268 /* Main.storyboard */,
+				74BFC0B51D981DF000CACB22 /* EbayAPI.swift */,
+				74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */,
 				746C22F31D9740E300444268 /* Assets.xcassets */,
 				746C22F51D9740E300444268 /* LaunchScreen.storyboard */,
 				746C22F81D9740E300444268 /* Info.plist */,
+				74BFC0B31D9816DB00CACB22 /* ItemCell.swift */,
 			);
 			path = BookList;
 			sourceTree = "<group>";
@@ -214,12 +223,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74BFC0B41D9816DB00CACB22 /* ItemCell.swift in Sources */,
 				746C23241D974CAF00444268 /* Item+CoreDataProperties.swift in Sources */,
 				746C23231D974CAF00444268 /* Item+CoreDataClass.swift in Sources */,
-				746C22EF1D9740E300444268 /* ViewController.swift in Sources */,
+				746C22EF1D9740E300444268 /* ItemViewController.swift in Sources */,
 				746C23121D9746AA00444268 /* Item.xcdatamodeld in Sources */,
+				74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */,
 				746C23211D974CAF00444268 /* Photo+CoreDataClass.swift in Sources */,
 				746C23221D974CAF00444268 /* Photo+CoreDataProperties.swift in Sources */,
+				74BFC0B61D981DF000CACB22 /* EbayAPI.swift in Sources */,
 				746C22ED1D9740E300444268 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +436,7 @@
 				746C23081D9740E400444268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		746C23091D9740E400444268 /* Build configuration list for PBXNativeTarget "BookListTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +445,7 @@
 				746C230B1D9740E400444268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
