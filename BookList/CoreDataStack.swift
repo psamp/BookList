@@ -53,7 +53,7 @@ class CoreDataStack {
     }
     
     func saveChanges() throws {
-        var error: Error?
+        var saveError: Error?
         
         mainQueueContext.performAndWait {
             
@@ -61,15 +61,15 @@ class CoreDataStack {
                 
                 do {
                     try self.mainQueueContext.save()
-                } catch let saveError {
-                    error = saveError
+                } catch {
+                    saveError = error
                 }
                 
             }
             
         }
         
-        if let thrownError = error {
+        if let thrownError = saveError {
             throw thrownError
         }
     }

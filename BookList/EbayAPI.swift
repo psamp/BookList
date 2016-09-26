@@ -18,33 +18,49 @@ enum ItemsResult {
     case Faliure(Error)
 }
 
-class EbayAPI {
+struct EbayAPI {
     
-    static let ebayURL = NSURL(string: "https://de-coding-test.s3.amazonaws.com/books.json")
+    static let ebayURL = URL(string: "https://de-coding-test.s3.amazonaws.com/books.json")!
     
-}
-
-extension EbayAPI {
-    
-    static func itemsFromJSONData(data: NSData,
-                          inContext context: NSManagedObjectContext) -> ItemsResult {
+    static func itemsFromJSONData(data: Data,
+                                  inContext context: NSManagedObjectContext) -> ItemsResult {
+        
         do {
-        
+            let jsonData = try JSONSerialization.jsonObject(with: data,
+                                                            options: [])
+            
+            guard let jsonArray = jsonData as? [[String : AnyObject]] else {
+                return .Faliure(EbayError.InvalidJSONData)
+            }
+            
+            var items = [Item]()
+            
+            for dictionary in jsonArray {
+                if let item = self.itemFrom(json: dictionary, context: context) {
+                    items.append(item)
+                }
+            }
+            
+            if items.isEmpty && !jsonArray.isEmpty {
+                return .Faliure(EbayError.InvalidJSONData)
+            }
+            
+            return .Success(items)
         } catch {
-        
             return .Faliure(error)
         }
-    
+        
     }
     
-    private func itemFrom(json: [String: AnyObject],
-                          context: NSManagedObjectContext) -> Item? {
+    private static func itemFrom(json: [String : AnyObject],
+                                 context: NSManagedObjectContext) -> Item? {
         
-        guard let title = json["title"] as? String,
-            let author = json["author"] as? String,
-            let imageURL = json["imageURL"] as? String else {
-                return nil
+        guard let title = json["title"] as? String else {
+            return nil
         }
+        
+        let author = json["author"] as? String
+        let imageURL = json["imageURL"] as? String
         
         var item: Item!
         
@@ -67,7 +83,7 @@ extension EbayAPI {
                                                            into: context) as! Item
                 item.title = title
                 item.author = author
-                item.imageURL = URL(string: imageURL)
+                item.imageURL = URL(string: imageURL!)
                 item.imageKey = UUID().uuidString
             }
             
