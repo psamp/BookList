@@ -14,13 +14,11 @@
 		746C22F71D9740E300444268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746C22F51D9740E300444268 /* LaunchScreen.storyboard */; };
 		746C23021D9740E400444268 /* BookListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C23011D9740E400444268 /* BookListTests.swift */; };
 		746C23121D9746AA00444268 /* Item.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 746C23101D9746AA00444268 /* Item.xcdatamodeld */; };
-		746C23211D974CAF00444268 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C231D1D974CAF00444268 /* Photo+CoreDataClass.swift */; };
-		746C23221D974CAF00444268 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C231E1D974CAF00444268 /* Photo+CoreDataProperties.swift */; };
-		746C23231D974CAF00444268 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C231F1D974CAF00444268 /* Item+CoreDataClass.swift */; };
-		746C23241D974CAF00444268 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */; };
 		74BFC0B41D9816DB00CACB22 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B31D9816DB00CACB22 /* ItemCell.swift */; };
 		74BFC0B61D981DF000CACB22 /* EbayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B51D981DF000CACB22 /* EbayAPI.swift */; };
 		74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */; };
+		74BFC0C31D98D40B00CACB22 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C11D98D40B00CACB22 /* Item+CoreDataClass.swift */; };
+		74BFC0C41D98D40B00CACB22 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C21D98D40B00CACB22 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +43,11 @@
 		746C23011D9740E400444268 /* BookListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTests.swift; sourceTree = "<group>"; };
 		746C23031D9740E400444268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746C23111D9746AA00444268 /* Item.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Item.xcdatamodel; sourceTree = "<group>"; };
-		746C231D1D974CAF00444268 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		746C231E1D974CAF00444268 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		746C231F1D974CAF00444268 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		74BFC0B31D9816DB00CACB22 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		74BFC0B51D981DF000CACB22 /* EbayAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EbayAPI.swift; sourceTree = "<group>"; };
 		74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		74BFC0C11D98D40B00CACB22 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		74BFC0C21D98D40B00CACB22 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +89,8 @@
 		746C22EB1D9740E300444268 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
-				746C231D1D974CAF00444268 /* Photo+CoreDataClass.swift */,
-				746C231F1D974CAF00444268 /* Item+CoreDataClass.swift */,
-				746C231E1D974CAF00444268 /* Photo+CoreDataProperties.swift */,
-				746C23201D974CAF00444268 /* Item+CoreDataProperties.swift */,
+				74BFC0C11D98D40B00CACB22 /* Item+CoreDataClass.swift */,
+				74BFC0C21D98D40B00CACB22 /* Item+CoreDataProperties.swift */,
 				746C23101D9746AA00444268 /* Item.xcdatamodeld */,
 				746C22EC1D9740E300444268 /* AppDelegate.swift */,
 				746C22EE1D9740E300444268 /* ItemViewController.swift */,
@@ -224,15 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BFC0B41D9816DB00CACB22 /* ItemCell.swift in Sources */,
-				746C23241D974CAF00444268 /* Item+CoreDataProperties.swift in Sources */,
-				746C23231D974CAF00444268 /* Item+CoreDataClass.swift in Sources */,
 				746C22EF1D9740E300444268 /* ItemViewController.swift in Sources */,
+				74BFC0C41D98D40B00CACB22 /* Item+CoreDataProperties.swift in Sources */,
 				746C23121D9746AA00444268 /* Item.xcdatamodeld in Sources */,
 				74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */,
-				746C23211D974CAF00444268 /* Photo+CoreDataClass.swift in Sources */,
-				746C23221D974CAF00444268 /* Photo+CoreDataProperties.swift in Sources */,
 				74BFC0B61D981DF000CACB22 /* EbayAPI.swift in Sources */,
 				746C22ED1D9740E300444268 /* AppDelegate.swift in Sources */,
+				74BFC0C31D98D40B00CACB22 /* Item+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
