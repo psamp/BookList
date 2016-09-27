@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 public class Item: NSManagedObject {
+    var image: UIImage?
 
 }

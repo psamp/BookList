@@ -19,6 +19,8 @@
 		74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */; };
 		74BFC0C31D98D40B00CACB22 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C11D98D40B00CACB22 /* Item+CoreDataClass.swift */; };
 		74BFC0C41D98D40B00CACB22 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C21D98D40B00CACB22 /* Item+CoreDataProperties.swift */; };
+		74BFC0C61D99BEC300CACB22 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C51D99BEC300CACB22 /* ItemStore.swift */; };
+		74BFC0C81D9AA21B00CACB22 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFC0C71D9AA21B00CACB22 /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		74BFC0C11D98D40B00CACB22 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		74BFC0C21D98D40B00CACB22 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		74BFC0C51D99BEC300CACB22 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		74BFC0C71D9AA21B00CACB22 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				746C22EE1D9740E300444268 /* ItemViewController.swift */,
 				746C22F01D9740E300444268 /* Main.storyboard */,
 				74BFC0B51D981DF000CACB22 /* EbayAPI.swift */,
+				74BFC0C51D99BEC300CACB22 /* ItemStore.swift */,
+				74BFC0C71D9AA21B00CACB22 /* ImageStore.swift */,
 				74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */,
 				746C22F31D9740E300444268 /* Assets.xcassets */,
 				746C22F51D9740E300444268 /* LaunchScreen.storyboard */,
@@ -219,6 +225,8 @@
 			files = (
 				74BFC0B41D9816DB00CACB22 /* ItemCell.swift in Sources */,
 				746C22EF1D9740E300444268 /* ItemViewController.swift in Sources */,
+				74BFC0C61D99BEC300CACB22 /* ItemStore.swift in Sources */,
+				74BFC0C81D9AA21B00CACB22 /* ImageStore.swift in Sources */,
 				74BFC0C41D98D40B00CACB22 /* Item+CoreDataProperties.swift in Sources */,
 				746C23121D9746AA00444268 /* Item.xcdatamodeld in Sources */,
 				74BFC0B81D98275F00CACB22 /* CoreDataStack.swift in Sources */,

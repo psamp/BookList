@@ -64,8 +64,11 @@ struct EbayAPI {
         
         var item: Item!
         
-        let request: NSFetchRequest<Item> = NSFetchRequest()
-        let predicate = NSPredicate(format: "title == \(title)")
+        let request = NSFetchRequest<Item>()
+        request.entity = Item.entity()
+        
+        let escapeNonAlphanumericCharacters = title.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)
+        let predicate = NSPredicate(format: "title == '\(escapeNonAlphanumericCharacters)'", [])
         request.predicate = predicate
         
         var fetchedItems: [Item]!
@@ -82,8 +85,15 @@ struct EbayAPI {
                 item = NSEntityDescription.insertNewObject(forEntityName: "Item",
                                                            into: context) as! Item
                 item.title = title
-                item.author = author
-                item.imageURL = URL(string: imageURL!)
+                
+                if let authorName = author {
+                    item.author = authorName
+                }
+                
+                if let url = imageURL {
+                    item.imageURL = URL(string: url)
+                }
+                
                 item.imageKey = UUID().uuidString
             }
             

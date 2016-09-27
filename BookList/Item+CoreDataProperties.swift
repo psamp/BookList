@@ -12,10 +12,6 @@ import CoreData
 
 extension Item {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Item> {
-        return NSFetchRequest<Item>(entityName: "Item");
-    }
-
     @NSManaged public var author: String?
     @NSManaged public var title: String
     @NSManaged public var imageURL: URL?
