@@ -20,6 +20,7 @@ enum ItemError: Error {
 }
 
 class ItemStore {
+    
     let coreDataStack = CoreDataStack(modelName: Item.entity().name!)
     
     let session: URLSession = {
@@ -27,10 +28,55 @@ class ItemStore {
         return URLSession(configuration: config)
     }()
     
-    func processItemsRequest(data: Data?, error: Error?) {
+}
+
+extension ItemStore {
+    
+    private func processItemsRequest(data: Data?, error: Error?) -> ItemsResult {
+        guard let jsonData = data else {
+            return .Faliure(error!)
+        }
+        
+        return EbayAPI.itemsFromJSONData(data: jsonData,
+                                         inContext: coreDataStack.mainQueueContext)
+    }
+    
+    func fetchItems(completionHandler: @escaping (ItemsResult) -> (Void)) {
+        let task = session.dataTask(with: EbayAPI.ebayURL) {
+            (data, response, error) in
+            var result = self.processItemsRequest(data: data, error: error)
+            
+            if case let .Success(items) = result {
+                
+                let pqc = self.coreDataStack.privateQueueContext
+                
+                pqc.performAndWait {
+                    try! pqc.obtainPermanentIDs(for: items)
+                }
+                
+                do {
+                    try self.coreDataStack.saveChanges()
+                    
+                    let mainQueueItems = try self.fetchMainQueueItems()
+                    result = ItemsResult.Success(mainQueueItems)
+                    
+                } catch {
+                    result = ItemsResult.Faliure(error)
+                }
+                
+            }
+            
+            
+            completionHandler(result)
+        }
+        
+        task.resume()
         
     }
     
+}
+
+extension ItemStore {
     func fetchMainQueueItems(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Item] {
         var mainQueueItems: [Item]?
@@ -45,11 +91,8 @@ class ItemStore {
         
         mainQueueContext.performAndWait {
             do {
-                
                 mainQueueItems = try mainQueueContext.fetch(request)
-                
             } catch {
-                
                 fetchError = error
             }
         }
@@ -61,6 +104,5 @@ class ItemStore {
         return items
         
     }
-    
     
 }

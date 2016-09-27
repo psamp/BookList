@@ -16,21 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let url = EbayAPI.ebayURL
-        print(url)
-        let session = URLSession.shared
-        let cds = CoreDataStack(modelName: "Item")
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if let jsonData = data {
-                
-                print(EbayAPI.itemsFromJSONData(data: jsonData, inContext: cds.mainQueueContext))
-                
-            }
-        }
-        
-        task.resume()
-        
         return true
     }
     
