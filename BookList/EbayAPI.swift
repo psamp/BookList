@@ -15,12 +15,12 @@ enum EbayError: Error {
 
 enum ItemsResult {
     case Success([Item])
-    case Faliure(Error)
+    case Failure(Error)
 }
 
 struct EbayAPI {
     
-    static let ebayURL = URL(string: "https://de-coding-test.s3.amazonaws.com/books.json")!
+    static let ebayURL = URL(string: "https://calm-mountain-87063.herokuapp.com/books.json")!
     
     static func itemsFromJSONData(data: Data,
                                   inContext context: NSManagedObjectContext) -> ItemsResult {
@@ -30,7 +30,7 @@ struct EbayAPI {
                                                             options: [])
             
             guard let jsonArray = jsonData as? [[String : AnyObject]] else {
-                return .Faliure(EbayError.InvalidJSONData)
+                return .Failure(EbayError.InvalidJSONData)
             }
             
             var items = [Item]()
@@ -42,12 +42,12 @@ struct EbayAPI {
             }
             
             if items.isEmpty && !jsonArray.isEmpty {
-                return .Faliure(EbayError.InvalidJSONData)
+                return .Failure(EbayError.InvalidJSONData)
             }
             
             return .Success(items)
         } catch {
-            return .Faliure(error)
+            return .Failure(error)
         }
         
     }

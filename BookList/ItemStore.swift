@@ -32,7 +32,7 @@ extension ItemStore {
     private func processItemsRequest(data: Data?, error: Error?) -> ItemsResult {
         
         guard let jsonData = data else {
-            return .Faliure(error!)
+            return .Failure(error!)
         }
         
         return EbayAPI.itemsFromJSONData(data: jsonData,
@@ -57,10 +57,10 @@ extension ItemStore {
                     try self.coreDataStack.saveChanges()
                     
                     let mainQueueItems = try self.fetchMainQueueItems()
-                    result = ItemsResult.Success(mainQueueItems)
+                    result = .Success(mainQueueItems)
                     
                 } catch {
-                    result = ItemsResult.Faliure(error)
+                    result = .Failure(error)
                 }
                 
             }
@@ -84,7 +84,7 @@ extension ItemStore {
         return .Success(image)
     }
     
-    func fetchImageFor(item: Item, completionHandler: @escaping (ImageResult) -> Void) {
+    func fetchImageForItem(_ item: Item, completionHandler: @escaping (ImageResult) -> Void) {
         
         let imageKey = item.imageKey
         
@@ -93,20 +93,23 @@ extension ItemStore {
             return
         }
         
-        let imageURL = self.convertURLToHTTPS(item.imageURL!)
-        
-        let task = session.dataTask(with: imageURL) { (data, response, error) in
-            let result = self.processImageRequest(data: data, error: error)
+        if let itemImageURL = item.imageURL {
             
-            if case let .Success(image) = result {
-                item.image = image
-                self.imageStore.setImage(image, forKey: item.imageKey!)
+            let imageURL = self.convertURLToHTTPS(itemImageURL)
+            
+            let task = session.dataTask(with: imageURL) { (data, response, error) in
+                let result = self.processImageRequest(data: data, error: error)
+                
+                if case let .Success(image) = result {
+                    item.image = image
+                    self.imageStore.setImage(image, forKey: item.imageKey!)
+                }
+                
+                completionHandler(result)
             }
             
-            completionHandler(result)
+            task.resume()
         }
-        
-        task.resume()
     }
     
     private func convertURLToHTTPS(_ url: URL) -> URL {

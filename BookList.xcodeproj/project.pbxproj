@@ -103,10 +103,10 @@
 				74BFC0C51D99BEC300CACB22 /* ItemStore.swift */,
 				74BFC0C71D9AA21B00CACB22 /* ImageStore.swift */,
 				74BFC0B71D98275F00CACB22 /* CoreDataStack.swift */,
+				74BFC0B31D9816DB00CACB22 /* ItemCell.swift */,
 				746C22F31D9740E300444268 /* Assets.xcassets */,
 				746C22F51D9740E300444268 /* LaunchScreen.storyboard */,
 				746C22F81D9740E300444268 /* Info.plist */,
-				74BFC0B31D9816DB00CACB22 /* ItemCell.swift */,
 			);
 			path = BookList;
 			sourceTree = "<group>";

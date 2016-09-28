@@ -10,13 +10,25 @@ import UIKit
 
 class ItemCell: UITableViewCell {
     
-    @IBOutlet var photo: UIImageView!
+    @IBOutlet private var photo: UIImageView!
     @IBOutlet var photoLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet var title: UILabel!
     @IBOutlet var author: UILabel!
     
     func hideAuthorLabel() {
         author.isHidden = true
+    }
+    
+    func updateWith(photo: UIImage?) {
+        
+        photoLoadingIndicator.startAnimating()
+        
+        if let image = photo {
+            self.photo.image = image
+        }
+        
+        photoLoadingIndicator.stopAnimating()
+    
     }
     
 }
