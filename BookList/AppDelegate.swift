@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let store = ItemStore()
+        
+        store.fetchItems { (result) in
+            switch result {
+            case let .Success(items):
+                print("Found \(items.count) items")
+                print(items)
+            case let .Faliure(error):
+                print("Failed to retrieve items because: \(error)")
+            }
+        }
+        
         return true
     }
     

@@ -10,18 +10,15 @@ import Foundation
 import CoreData
 import UIKit
 
-enum ImageResult: Error {
-    case Success(UIImage)
-    case Faliure(Error)
-}
-
 enum ItemError: Error {
     case ItemCreationFaliure
 }
 
 class ItemStore {
     
-    let coreDataStack = CoreDataStack(modelName: Item.entity().name!)
+    let coreDataStack = CoreDataStack(modelName: "Item")
+    
+    let imageStore = ImageStore()
     
     let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -33,6 +30,7 @@ class ItemStore {
 extension ItemStore {
     
     private func processItemsRequest(data: Data?, error: Error?) -> ItemsResult {
+        
         guard let jsonData = data else {
             return .Faliure(error!)
         }
@@ -42,6 +40,7 @@ extension ItemStore {
     }
     
     func fetchItems(completionHandler: @escaping (ItemsResult) -> (Void)) {
+        
         let task = session.dataTask(with: EbayAPI.ebayURL) {
             (data, response, error) in
             var result = self.processItemsRequest(data: data, error: error)
@@ -66,7 +65,6 @@ extension ItemStore {
                 
             }
             
-            
             completionHandler(result)
         }
         
@@ -77,11 +75,60 @@ extension ItemStore {
 }
 
 extension ItemStore {
+    
+    private func processImageRequest(data: Data?, error: Error?) -> ImageResult {
+        
+        guard let imageData = data, let image = UIImage(data: imageData) else {
+            return data == nil ? .Failure(error!) : .Failure(ItemError.ItemCreationFaliure)
+        }
+        return .Success(image)
+    }
+    
+    func fetchImageFor(item: Item, completionHandler: @escaping (ImageResult) -> Void) {
+        
+        let imageKey = item.imageKey
+        
+        if let image = imageStore.imageForKey(imageKey!) {
+            completionHandler(.Success(image))
+            return
+        }
+        
+        let imageURL = self.convertURLToHTTPS(item.imageURL!)
+        
+        let task = session.dataTask(with: imageURL) { (data, response, error) in
+            let result = self.processImageRequest(data: data, error: error)
+            
+            if case let .Success(image) = result {
+                item.image = image
+                self.imageStore.setImage(image, forKey: item.imageKey!)
+            }
+            
+            completionHandler(result)
+        }
+        
+        task.resume()
+    }
+    
+    private func convertURLToHTTPS(_ url: URL) -> URL {
+        
+        var components = URLComponents(string: url.absoluteString)
+        components?.scheme = "https"
+        
+        let secureURL = components?.url
+        
+        return secureURL!
+        
+    }
+}
+
+extension ItemStore {
     func fetchMainQueueItems(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Item] {
+        
         var mainQueueItems: [Item]?
         
         let request: NSFetchRequest<Item> = NSFetchRequest<Item>()
+        request.entity = Item.entity()
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         
