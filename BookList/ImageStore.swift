@@ -10,6 +10,7 @@ import UIKit
 
 enum ImageResult {
     case Success(UIImage)
+    case NoImage
     case Failure(Error)
 }
 

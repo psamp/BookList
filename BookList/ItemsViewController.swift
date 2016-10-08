@@ -1,5 +1,5 @@
 //
-//  ItemViewController.swift
+//  ItemsViewController.swift
 //  BookList
 //
 //  Created by Princess Sampson on 9/24/16.
@@ -8,39 +8,43 @@
 
 import UIKit
 
-class ItemViewController: UITableViewController {
+class ItemsViewController: UITableViewController {
     
-    var items: [Item] = []
+    var items: [Item] = [] {
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
+    
     fileprivate var store = ItemStore()
+    fileprivate let privateQueue = OperationQueue()
     
 }
 
-extension ItemViewController {
+extension ItemsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store.fetchItems {
-            (itemResult) in
-            
-            OperationQueue.main.addOperation {
+        privateQueue.addOperation {
+            self.store.fetchItems {
+                (itemResult) in
                 
-                switch itemResult {
-                case let .Success(items):
-                    self.items = items
-                    
-                case let .Failure(error):
-                    print("Could not retrieve items because: \(error)")
+                OperationQueue.main.addOperation {
+                    switch itemResult {
+                    case let .Success(items):
+                        self.items = items
+                    case let .Failure(error):
+                        print("Could not retrieve items because: \(error)")
+                    }
                 }
+                
             }
-            
         }
-        
-        tableView.reloadData()
-        
     }
 }
 
-extension ItemViewController {
+extension ItemsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -55,34 +59,33 @@ extension ItemViewController {
         
         if let itemAuthor = item.author {
             cell.author.text = itemAuthor
+            cell.author.isHidden = false
         } else {
             cell.author.isHidden = true
         }
-        
-        print("\n\n\ngiving: \(cell)")
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
         
-        store.fetchImageForItem(item) { (result) in
-            
-            OperationQueue.main.addOperation {
+        let item = items[indexPath.row]
+        let itemCell = cell as! ItemCell
+        
+        privateQueue.addOperation {
+            EbayAPI.fetchImageForItem(item) { (result) in
                 
-                let itemIndex = self.items.index(of: item)
-                let itemIndexPath = IndexPath(row: itemIndex!, section: 0)
-                
-                if let cell = self.tableView(self.tableView,
-                                             cellForRowAt: itemIndexPath) as? ItemCell {
-                    cell.updateWith(photo: item.image)
+                switch result {
+                case let .Success(image):
+                    item.image = image
+                default:
+                    break
                 }
-                
-                
             }
-            
         }
+        
+        itemCell.updateWith(photo: item.image ?? UIImage(named: "no-image-placeholder")!)
+        
     }
     
 }

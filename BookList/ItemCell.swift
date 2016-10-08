@@ -19,16 +19,14 @@ class ItemCell: UITableViewCell {
         author.isHidden = true
     }
     
-    func updateWith(photo: UIImage?) {
+    func updateWith(photo: UIImage) {
         
         photoLoadingIndicator.startAnimating()
         
-        if let image = photo {
-            self.photo.image = image
-        }
+        self.photo.image = photo
         
         photoLoadingIndicator.stopAnimating()
-    
+        
     }
     
 }

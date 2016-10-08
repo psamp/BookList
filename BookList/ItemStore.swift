@@ -18,8 +18,6 @@ class ItemStore {
     
     let coreDataStack = CoreDataStack(modelName: "Item")
     
-    let imageStore = ImageStore()
-    
     let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -58,7 +56,6 @@ extension ItemStore {
                     
                     let mainQueueItems = try self.fetchMainQueueItems()
                     result = .Success(mainQueueItems)
-                    
                 } catch {
                     result = .Failure(error)
                 }
@@ -75,56 +72,6 @@ extension ItemStore {
 }
 
 extension ItemStore {
-    
-    private func processImageRequest(data: Data?, error: Error?) -> ImageResult {
-        
-        guard let imageData = data, let image = UIImage(data: imageData) else {
-            return data == nil ? .Failure(error!) : .Failure(ItemError.ItemCreationFaliure)
-        }
-        return .Success(image)
-    }
-    
-    func fetchImageForItem(_ item: Item, completionHandler: @escaping (ImageResult) -> Void) {
-        
-        let imageKey = item.imageKey
-        
-        if let image = imageStore.imageForKey(imageKey!) {
-            completionHandler(.Success(image))
-            return
-        }
-        
-        if let itemImageURL = item.imageURL {
-            
-            let imageURL = self.convertURLToHTTPS(itemImageURL)
-            
-            let task = session.dataTask(with: imageURL) { (data, response, error) in
-                let result = self.processImageRequest(data: data, error: error)
-                
-                if case let .Success(image) = result {
-                    item.image = image
-                    self.imageStore.setImage(image, forKey: item.imageKey!)
-                }
-                
-                completionHandler(result)
-            }
-            
-            task.resume()
-        }
-    }
-    
-    private func convertURLToHTTPS(_ url: URL) -> URL {
-        
-        var components = URLComponents(string: url.absoluteString)
-        components?.scheme = "https"
-        
-        let secureURL = components?.url
-        
-        return secureURL!
-        
-    }
-}
-
-extension ItemStore {
     func fetchMainQueueItems(predicate: NSPredicate? = nil,
                              sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Item] {
         
@@ -136,6 +83,7 @@ extension ItemStore {
         request.sortDescriptors = sortDescriptors
         
         let mainQueueContext = self.coreDataStack.mainQueueContext
+        
         
         var fetchError: Error?
         
@@ -152,7 +100,6 @@ extension ItemStore {
         }
         
         return items
-        
     }
     
 }

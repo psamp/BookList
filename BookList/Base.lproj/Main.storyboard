@@ -11,29 +11,29 @@
         <!--BookList-->
         <scene sceneID="mgG-mO-55q">
             <objects>
-                <tableViewController id="3BT-kd-1nS" customClass="ItemViewController" customModule="BookList" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZTQ-ts-Blq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <tableViewController id="3BT-kd-1nS" customClass="ItemsViewController" customModule="BookList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZTQ-ts-Blq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" rowHeight="90" id="C7K-N8-dDg" customClass="ItemCell" customModule="BookList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C7K-N8-dDg" id="IIO-a5-g0H">
-                                    <frame key="frameInset" width="320" height="89"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xml-e8-Qg6"/>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-Rs-fss"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-Rs-fss"/>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-To-HhC">
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCW-iB-ks9">
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCW-iB-ks9">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Box-4Z-aH4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Box-4Z-aH4">
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -44,13 +44,14 @@
                                     <constraints>
                                         <constraint firstItem="oaG-Rs-fss" firstAttribute="width" secondItem="IIO-a5-g0H" secondAttribute="width" multiplier="1:4" id="0PY-qi-DoZ"/>
                                         <constraint firstItem="xml-e8-Qg6" firstAttribute="centerX" secondItem="oaG-Rs-fss" secondAttribute="centerX" id="6Dn-xf-HBd"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="oaG-Rs-fss" secondAttribute="bottom" id="75M-v8-FEN"/>
+                                        <constraint firstItem="oaG-Rs-fss" firstAttribute="bottom" secondItem="IIO-a5-g0H" secondAttribute="bottom" id="75M-v8-FEN"/>
+                                        <constraint firstItem="PlS-To-HhC" firstAttribute="height" secondItem="oaG-Rs-fss" secondAttribute="height" multiplier="2:3" id="MLy-iV-EPx"/>
                                         <constraint firstItem="xml-e8-Qg6" firstAttribute="centerY" secondItem="oaG-Rs-fss" secondAttribute="centerY" id="QfY-pi-9m3"/>
-                                        <constraint firstItem="oaG-Rs-fss" firstAttribute="top" secondItem="IIO-a5-g0H" secondAttribute="topMargin" id="dYM-vf-wZn"/>
+                                        <constraint firstItem="oaG-Rs-fss" firstAttribute="top" secondItem="IIO-a5-g0H" secondAttribute="top" id="dYM-vf-wZn"/>
                                         <constraint firstItem="PlS-To-HhC" firstAttribute="leading" secondItem="oaG-Rs-fss" secondAttribute="trailing" constant="15" id="iqq-i1-qdO"/>
                                         <constraint firstItem="oaG-Rs-fss" firstAttribute="centerY" secondItem="PlS-To-HhC" secondAttribute="centerY" id="k9u-yc-LfJ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PlS-To-HhC" secondAttribute="trailing" id="lkv-mS-HlI"/>
-                                        <constraint firstItem="oaG-Rs-fss" firstAttribute="leading" secondItem="IIO-a5-g0H" secondAttribute="leadingMargin" id="uFF-OE-fDz"/>
+                                        <constraint firstItem="oaG-Rs-fss" firstAttribute="leading" secondItem="IIO-a5-g0H" secondAttribute="leading" id="uFF-OE-fDz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -62,8 +63,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="3BT-kd-1nS" id="Zbt-qr-pCh"/>
-                            <outlet property="delegate" destination="3BT-kd-1nS" id="bt7-pJ-5n7"/>
+                            <outlet property="dataSource" destination="3BT-kd-1nS" id="sbu-o6-F0B"/>
+                            <outlet property="delegate" destination="3BT-kd-1nS" id="6lT-q0-IgY"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="BookList" id="7Rr-D0-fMi"/>
@@ -91,7 +92,4 @@
             <point key="canvasLocation" x="969.375" y="35.91549295774648"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="no-image-placeholder" width="1200" height="1200"/>
-    </resources>
 </document>
