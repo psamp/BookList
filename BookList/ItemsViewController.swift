@@ -64,14 +64,6 @@ extension ItemsViewController {
             cell.author.isHidden = true
         }
         
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let item = items[indexPath.row]
-        let itemCell = cell as! ItemCell
-        
         privateQueue.addOperation {
             EbayAPI.fetchImageForItem(item) { (result) in
                 
@@ -84,8 +76,9 @@ extension ItemsViewController {
             }
         }
         
-        itemCell.updateWith(photo: item.image ?? UIImage(named: "no-image-placeholder")!)
+        cell.updateWith(photo: item.image ?? UIImage(named: "no-image-placeholder")!)
         
+        return cell
     }
     
 }
